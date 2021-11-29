@@ -345,7 +345,12 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8093317170464215911, guid: 9fedecbd1aa68924b816f15cb97e611a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8093317170464215911, guid: 9fedecbd1aa68924b816f15cb97e611a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9fedecbd1aa68924b816f15cb97e611a, type: 3}
 --- !u!1001 &262485727
 PrefabInstance:
@@ -426,26 +431,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 0.5
-  m_Radius: 0.5
+  m_Radius: 0.84
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &350436060
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 350436054}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5019329
-  m_Height: 1.6597753
-  m_Direction: 1
-  m_Center: {x: 0.001932919, y: 0.6650317, z: 0}
+  m_Center: {x: 0, y: 0.82, z: 0}
 --- !u!1001 &428487716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -621,8 +612,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 51.139313, y: 2.1465788, z: 30.165344}
-  m_Center: {x: -4.2605286, y: -1.5732894, z: 8.855148}
+  m_Size: {x: 49.885715, y: 2.5308158, z: 32.404636}
+  m_Center: {x: -4.887327, y: -1.3811709, z: 7.7355022}
 --- !u!1001 &1436038697
 PrefabInstance:
   m_ObjectHideFlags: 0

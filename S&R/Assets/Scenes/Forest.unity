@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1245308327}
-  m_IndirectSpecularColor: {r: 0.08714632, g: 0.19072613, b: 0.43281752, a: 1}
+  m_IndirectSpecularColor: {r: 0.008107357, g: 0.029838763, b: 0.15452991, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9063,7 +9063,6 @@ Transform:
   - {fileID: 1511147826}
   - {fileID: 2124694670}
   - {fileID: 706875541}
-  - {fileID: 1403715670}
   - {fileID: 1178461356}
   - {fileID: 1422723476}
   - {fileID: 2003883012}
@@ -9117,7 +9116,6 @@ Transform:
   - {fileID: 693593535}
   - {fileID: 1064350748}
   - {fileID: 277395407}
-  - {fileID: 1325835404}
   - {fileID: 168247411}
   - {fileID: 1681607912}
   - {fileID: 1771633428}
@@ -9155,6 +9153,7 @@ Transform:
   - {fileID: 1393447577}
   - {fileID: 290789245}
   - {fileID: 860675226}
+  - {fileID: 1403715670}
   - {fileID: 226006262}
   - {fileID: 371501929}
   - {fileID: 726141320}
@@ -9213,6 +9212,7 @@ Transform:
   - {fileID: 535786317}
   - {fileID: 1907335679}
   - {fileID: 499185722}
+  - {fileID: 1325835404}
   - {fileID: 135400621}
   - {fileID: 931276128}
   - {fileID: 51481881}
@@ -9248,7 +9248,6 @@ Transform:
   - {fileID: 167944331}
   - {fileID: 589393043}
   - {fileID: 1391807064}
-  - {fileID: 1763098371}
   - {fileID: 1968185493}
   - {fileID: 609252403}
   - {fileID: 1388199686}
@@ -9290,6 +9289,7 @@ Transform:
   - {fileID: 617719086}
   - {fileID: 881072251}
   - {fileID: 539270437}
+  - {fileID: 1763098371}
   - {fileID: 1159361293}
   - {fileID: 611240884}
   - {fileID: 560996500}
@@ -9350,8 +9350,8 @@ Transform:
   - {fileID: 1329656083}
   - {fileID: 2072473447}
   - {fileID: 1596056118}
-  - {fileID: 2043195858}
   - {fileID: 579986794}
+  - {fileID: 2043195858}
   - {fileID: 1602945958}
   - {fileID: 876488761}
   - {fileID: 1402583012}
@@ -10929,7 +10929,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -10948,7 +10948,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721735071}
   m_LocalRotation: {x: -0.024232272, y: 0.70669144, z: -0.70669144, w: -0.024232272}
-  m_LocalPosition: {x: 40.4, y: 170.8, z: 51.6}
+  m_LocalPosition: {x: 40.4, y: 93, z: 51.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
