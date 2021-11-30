@@ -17,6 +17,11 @@ public class foxMove : MonoBehaviour
     private float gravity = 9.8f;
     private float vSpeed = 0.0f;
 
+    void Awake()
+    {
+        animator.SetBool("isDied", false);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +48,11 @@ public class foxMove : MonoBehaviour
                 Jump();
             }
         }
+
+        if (rockRoll.isHit)
+        {
+            animator.SetBool("isDied", true);
+        }
     }
 
     private void Move()
@@ -63,7 +73,7 @@ public class foxMove : MonoBehaviour
             if (Input.GetAxis("Jump") != 0 && characterController.isGrounded)
             {
                 animator.SetBool("isJump", true);
-                vSpeed = 2;
+                vSpeed = 5;
             }
 
             vSpeed -= gravity * Time.deltaTime;
