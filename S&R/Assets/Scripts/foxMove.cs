@@ -9,6 +9,7 @@ public class foxMove : MonoBehaviour
     private float runSpeed = 5.0f;
     public float rotationSpeed = 100.0f;
     public static bool OnTheGround = true;
+    public static bool rockSpeedUp = false;
 
     public Animator animator;//Animator Controller
     private CharacterController characterController;
@@ -132,6 +133,11 @@ public class foxMove : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             OnTheGround = true;
+        }
+        else if (collision.gameObject.tag == "TrapFast")
+        {
+            rockSpeedUp = true;
+            Debug.Log("yes");
         }
     }
 }
