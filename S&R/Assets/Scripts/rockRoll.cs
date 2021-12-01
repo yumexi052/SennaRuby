@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class rockRoll : MonoBehaviour
 {
-    public int moveSpeed = 3;
+    public static int moveSpeed = 3;
     public static bool isHit = false;
     //public AudioClip hitSound;
     //public AudioClip resetSound;
@@ -19,5 +19,8 @@ public class rockRoll : MonoBehaviour
             //audio.Play();
             isHit = true;
         }
+
+        if (trap.speedUp)
+            moveSpeed += 10;
     }
 }
