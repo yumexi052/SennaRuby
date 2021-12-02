@@ -34,15 +34,15 @@ public class foxMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0) 
+        if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
         {
             animator.SetBool("isWalk", false);
             animator.SetBool("isRun", false);
             timer += Time.deltaTime;
-            if(timer > 3)
+            if (timer > 3)
                 animator.SetBool("isSit", true);
         }
-        else 
+        else
         {
             timer = 0.0f;
             animator.SetBool("isSit", false);
@@ -64,7 +64,7 @@ public class foxMove : MonoBehaviour
 
         RaycastHit hit;
         Debug.DrawRay(transform.position, transform.forward, Color.black);
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 2.0f))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 1.0f))
         {
             if (hit.collider.gameObject.tag == "TrapFast")
             {
@@ -76,20 +76,19 @@ public class foxMove : MonoBehaviour
                 hit.collider.gameObject.SetActive(false);
                 Debug.Log("Door triggered");
                 timerDoor += Time.deltaTime;
-                
+
             }
-            else
-            {
-                hit.collider.gameObject.SetActive(true);
-                Debug.Log("Door Closed");
-                timerDoor = 0.0f;
-            }
-        }
-        if (timerDoor > 3)
-        {
-            hit.collider.gameObject.SetActive(true);
-            Debug.Log("Door Closed");
-            timerDoor = 0.0f;
+            //else
+            //{
+            //    GameObject door;
+            //    door = GameObject.FindWithTag("Door");
+            //    if (timerDoor > 3)
+            //    {
+            //        door.SetActive(true);
+            //        Debug.Log("Door Closed");
+            //        timerDoor = 0.0f;
+            //    }   
+            //}
         }
 
     }
@@ -109,11 +108,11 @@ public class foxMove : MonoBehaviour
             rotationDirection = new Vector3(0, rotation, 0);
             transform.Rotate(this.rotationDirection);
 
-            if (Input.GetAxis("Jump") != 0 && characterController.isGrounded)
-            {
-                animator.SetBool("isJump", true);
-                vSpeed = 5;
-            }
+            //if (Input.GetAxis("Jump") != 0 && characterController.isGrounded)
+            //{
+            //    animator.SetBool("isJump", true);
+            //    vSpeed = 5;
+            //}
 
             vSpeed -= gravity * Time.deltaTime;
             moveDirection.y = vSpeed;
@@ -132,17 +131,17 @@ public class foxMove : MonoBehaviour
             rotationDirection = new Vector3(0, rotation, 0);
             transform.Rotate(this.rotationDirection);
 
-            if (Input.GetAxis("Jump") != 0 && characterController.isGrounded)
-            {
-                animator.SetBool("isJump", true);
-                vSpeed = 2;
-            }
+            //if (Input.GetAxis("Jump") != 0 && characterController.isGrounded)
+            //{
+            //    animator.SetBool("isJump", true);
+            //    vSpeed = 5;
+            //}
 
             vSpeed -= gravity * Time.deltaTime;
             moveDirection.y = vSpeed;
             characterController.Move(moveDirection * Time.deltaTime);
         }
-        
+
     }
 
     private void Jump()
@@ -159,7 +158,7 @@ public class foxMove : MonoBehaviour
             rotationDirection = new Vector3(0, rotation, 0);
             transform.Rotate(this.rotationDirection);
 
-            vSpeed = 2;
+            vSpeed = 5;
             vSpeed -= gravity * Time.deltaTime;
             moveDirection.y = vSpeed;
             characterController.Move(moveDirection * Time.deltaTime);
