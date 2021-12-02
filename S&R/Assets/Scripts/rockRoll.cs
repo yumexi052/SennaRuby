@@ -6,9 +6,16 @@ using UnityEngine;
 public class rockRoll : MonoBehaviour
 {
     public int moveSpeed = 3;
+    private float forceValue = 5f;
     public static bool isHit = false;
+    Rigidbody rigidbody;
     //public AudioClip hitSound;
     //public AudioClip resetSound;
+
+    void Start()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -23,7 +30,10 @@ public class rockRoll : MonoBehaviour
 
     void Update()
     {
-        if (trap.speedUp)
-            moveSpeed += 10;
+        if (foxMove.rockSpeedUp)
+        {
+            rigidbody.AddForce(0, -forceValue, 0, ForceMode.Impulse);
+        }
+            
     }
 }

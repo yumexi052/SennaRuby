@@ -10,6 +10,8 @@ public class foxMove : MonoBehaviour
     public float rotationSpeed = 100.0f;
     public static bool OnTheGround = true;
     public static bool rockSpeedUp = false;
+    private float timer = 0.0f;
+    private float timerDoor = 0.0f;
 
     public Animator animator;//Animator Controller
     private CharacterController characterController;
@@ -36,9 +38,14 @@ public class foxMove : MonoBehaviour
         {
             animator.SetBool("isWalk", false);
             animator.SetBool("isRun", false);
+            timer += Time.deltaTime;
+            if(timer > 3)
+                animator.SetBool("isSit", true);
         }
         else 
         {
+            timer = 0.0f;
+            animator.SetBool("isSit", false);
             Move();
             if (Input.GetAxis("Jump") == 0)
             {
@@ -54,6 +61,37 @@ public class foxMove : MonoBehaviour
         {
             animator.SetBool("isDied", true);
         }
+
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.forward, Color.black);
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 2.0f))
+        {
+            if (hit.collider.gameObject.tag == "TrapFast")
+            {
+                rockSpeedUp = true;
+                Debug.Log("TrapFast triggered");
+            }
+            if (hit.collider.gameObject.tag == "Door")
+            {
+                hit.collider.gameObject.SetActive(false);
+                Debug.Log("Door triggered");
+                timerDoor += Time.deltaTime;
+                
+            }
+            else
+            {
+                hit.collider.gameObject.SetActive(true);
+                Debug.Log("Door Closed");
+                timerDoor = 0.0f;
+            }
+        }
+        if (timerDoor > 3)
+        {
+            hit.collider.gameObject.SetActive(true);
+            Debug.Log("Door Closed");
+            timerDoor = 0.0f;
+        }
+
     }
 
     private void Move()
@@ -125,19 +163,6 @@ public class foxMove : MonoBehaviour
             vSpeed -= gravity * Time.deltaTime;
             moveDirection.y = vSpeed;
             characterController.Move(moveDirection * Time.deltaTime);
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            OnTheGround = true;
-        }
-        else if (collision.gameObject.tag == "TrapFast")
-        {
-            rockSpeedUp = true;
-            Debug.Log("yes");
         }
     }
 }
