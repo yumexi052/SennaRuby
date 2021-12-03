@@ -6,7 +6,7 @@ public class rockSpawn : MonoBehaviour
 {
     public GameObject rock;
     private float timer = 0.0f;
-    private int noOfEnemy = 1;
+    public static int noOfEnemy = 1;
 
     // Start is called before the first frame update
     void Awake()
@@ -18,6 +18,12 @@ public class rockSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (rockRoll.destroyRock)
+        {
+            noOfEnemy = 0;
+            rockRoll.destroyRock = false;
+        }
+
         if (noOfEnemy == 0)
         {
             timer += Time.deltaTime;

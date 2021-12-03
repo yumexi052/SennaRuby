@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - TrapFast
   - Door
+  - TrapDanger
+  - TipsParticle
+  - TrapParticle
   layers:
   - Default
   - TransparentFX

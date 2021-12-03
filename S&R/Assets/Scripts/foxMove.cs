@@ -9,6 +9,7 @@ public class foxMove : MonoBehaviour
     private float runSpeed = 5.0f;
     public float rotationSpeed = 100.0f;
     public static bool OnTheGround = true;
+    public static bool trapTrigger = false;
     public static bool rockSpeedUp = false;
     private float timer = 0.0f;
     private float timerDoor = 0.0f;
@@ -36,17 +37,14 @@ public class foxMove : MonoBehaviour
     {
         if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
         {
+            animator.SetBool("isSkill", false);
             animator.SetBool("isWalk", false);
             animator.SetBool("isRun", false);
             timer += Time.deltaTime;
             if (timer > 3)
+            {
                 animator.SetBool("isSit", true);
-        }
-        else
-        {
-            timer = 0.0f;
-            animator.SetBool("isSit", false);
-            Move();
+            }
             if (Input.GetAxis("Jump") == 0)
             {
                 animator.SetBool("isJump", false);
@@ -56,16 +54,43 @@ public class foxMove : MonoBehaviour
                 Jump();
             }
         }
+        else
+        {
+            timer = 0.0f;
+            animator.SetBool("isSit", false);
 
-        if (rockRoll.isHit)
+            Move();
+            if (Input.GetAxis("Jump") == 0)
+            {
+                animator.SetBool("isJump", false);
+            }
+            else
+            {
+                Jump();
+            }
+            if (Input.GetKey(KeyCode.J))
+            {
+                animator.SetBool("isSkill", true);
+            }
+        }
+
+        if (Input.GetKey(KeyCode.J))
+            animator.SetBool("isSkill", true);
+            
+
+        if (rockRoll.isHit || trapTrigger)
         {
             animator.SetBool("isDied", true);
         }
 
         RaycastHit hit;
         Debug.DrawRay(transform.position, transform.forward, Color.black);
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 1.0f))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 1.5f))
         {
+            if (hit.collider.gameObject.tag == "Ground")
+            {
+                OnTheGround = true;
+            }
             if (hit.collider.gameObject.tag == "TrapFast")
             {
                 rockSpeedUp = true;
@@ -76,7 +101,11 @@ public class foxMove : MonoBehaviour
                 hit.collider.gameObject.SetActive(false);
                 Debug.Log("Door triggered");
                 timerDoor += Time.deltaTime;
-
+            }
+            if (hit.collider.gameObject.tag == "TrapDanger")
+            {
+                trapTrigger = true;
+                Debug.Log("TrapDanger triggered");
             }
             //else
             //{
@@ -97,6 +126,8 @@ public class foxMove : MonoBehaviour
     {
         if (Input.GetAxis("Run") != 0)
         {
+
+            animator.SetBool("isSkill", false);
             animator.SetBool("isRun", true);
             animator.SetBool("isWalk", false);
             float moveZ = Input.GetAxis("Vertical");
@@ -117,9 +148,11 @@ public class foxMove : MonoBehaviour
             vSpeed -= gravity * Time.deltaTime;
             moveDirection.y = vSpeed;
             characterController.Move(moveDirection * Time.deltaTime);
+
         }
         else
         {
+            animator.SetBool("isSkill", false);
             animator.SetBool("isWalk", true);
             animator.SetBool("isRun", false);
             float moveZ = Input.GetAxis("Vertical");
@@ -140,6 +173,7 @@ public class foxMove : MonoBehaviour
             vSpeed -= gravity * Time.deltaTime;
             moveDirection.y = vSpeed;
             characterController.Move(moveDirection * Time.deltaTime);
+
         }
 
     }
@@ -148,6 +182,7 @@ public class foxMove : MonoBehaviour
     {
         if (Input.GetAxis("Jump") != 0 && characterController.isGrounded)
         {
+            animator.SetBool("isSkill", false);
             animator.SetBool("isJump", true);
             float moveZ = Input.GetAxis("Vertical");
             float rotation = Input.GetAxis("Horizontal");

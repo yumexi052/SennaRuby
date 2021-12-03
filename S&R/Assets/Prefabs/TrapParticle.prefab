@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3926287381585141786}
   m_Layer: 0
   m_Name: TrapParticle
-  m_TagString: Untagged
+  m_TagString: TrapParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4817,3 +4817,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c1e9708025915243992611e0c721f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particle: {fileID: 3926287381585141788}
